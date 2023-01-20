@@ -21,9 +21,10 @@ const Messages = () => {
   console.log(messages);
   return (
     <div className="bg-[#ddddf7] p-[10px] h-[calc(100%-100px)] overflow-scroll">
-      {messages.map((message) => (
-        <Message key={message.id} message={message} />
-      ))}
+      {messages &&
+        messages.map((message) => (
+          <Message key={message.id} message={message} />
+        ))}
     </div>
   );
 };
