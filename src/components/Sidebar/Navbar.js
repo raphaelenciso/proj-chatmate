@@ -9,7 +9,7 @@ const Navbar = () => {
 
   return (
     <div className="flex items-center bg-dark-bg-neutral-lighter h-[50px] p-[10px] justify-between text-dark-text-primary">
-      <span className=" font-bold  ">Chat App</span>
+      <span className=" font-bold  ">ChatMate</span>
       <div className="flex items-center gap-[10px]">
         <img
           src={currentUser.photoURL}

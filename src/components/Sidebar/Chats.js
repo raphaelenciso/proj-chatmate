@@ -48,9 +48,6 @@ const Chats = () => {
                   {chat[1].userInfo.displayName}
                 </span>
                 <p className="text-sm text-dark-text-secondary ">
-                  {/* {chat[1].lastMessage?.text.length > 20
-                    ? chat[1].lastMessage.text.substring(0, 20) + "..."
-                    : chat[1].lastMessage.text} */}
                   {chat[1].lastMessage &&
                     chat[1].lastMessage.text.length > 20 &&
                     chat[1].lastMessage.text.substring(0, 20) + "..."}

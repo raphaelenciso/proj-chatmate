@@ -83,7 +83,7 @@ const Search = () => {
           className="bg-transparent text-white placeholder-slate-400 w-full p-[10px]"
           placeholder="Find a user"
           onChange={(e) => setUsername(e.target.value)}
-          onKeyDown={(e) => e.code === "Enter" && handleSearch(username)}
+          onKeyDown={(e) => e.key === "Enter" && handleSearch(username)}
           value={username}
         />
       </div>
