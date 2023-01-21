@@ -81,6 +81,7 @@ export default function Input() {
           className="hidden"
           accept="image/*"
           onChange={(e) => setImg(e.target.files[0])}
+          onKeyDown={(e) => e.key === "Enter" && handleSend}
         />
         <label htmlFor="file">
           <img
