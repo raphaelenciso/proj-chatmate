@@ -18,20 +18,22 @@ function App() {
   return (
     <div>
       <Router>
-        <Routes>
-          <Route
-            path="/"
-            element={currentUser ? <Home /> : <Navigate to="/login" />}
-          />
-          <Route
-            path="/login"
-            element={!currentUser ? <Login /> : <Navigate to="/" />}
-          />
-          <Route
-            path="/register"
-            element={!currentUser ? <Register /> : <Navigate to="/" />}
-          />
-        </Routes>
+        <div className="bg-dark-bg-main h-screen flex justify-center items-center">
+          <Routes>
+            <Route
+              path="/"
+              element={currentUser ? <Home /> : <Navigate to="/login" />}
+            />
+            <Route
+              path="/login"
+              element={!currentUser ? <Login /> : <Navigate to="/" />}
+            />
+            <Route
+              path="/register"
+              element={!currentUser ? <Register /> : <Navigate to="/" />}
+            />
+          </Routes>
+        </div>
       </Router>
     </div>
   );

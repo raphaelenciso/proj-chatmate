@@ -10,8 +10,8 @@ import {
   where,
 } from "firebase/firestore";
 import { useContext, useState } from "react";
-import { AuthContext } from "../context/AuthContext";
-import { db } from "../firebase";
+import { AuthContext } from "../../context/AuthContext";
+import { db } from "../../firebase";
 
 const Search = () => {
   const [username, setUsername] = useState("");
@@ -77,10 +77,10 @@ const Search = () => {
 
   return (
     <div className="border-b-[1px]">
-      <div className="p-[10px]">
+      <div className="p-1">
         <input
           type="text"
-          className="bg-transparent text-white placeholder-slate-400 w-full"
+          className="bg-transparent text-white placeholder-slate-400 w-full p-[10px]"
           placeholder="Find a user"
           onChange={(e) => setUsername(e.target.value)}
           onKeyDown={(e) => e.code === "Enter" && handleSearch(username)}
@@ -89,13 +89,13 @@ const Search = () => {
       </div>
       {user && (
         <div
-          className="p-[10px] flex items-center text-white gap-[10px] cursor-pointer hover:bg-[#2f2d52]"
+          className="p-[10px] flex items-center text-white gap-[10px] cursor-pointer hover:bg-dark-bg-neutral-lighter"
           onClick={handleSelect}
         >
           <img
             src={user.photoURL}
             alt="img"
-            className="bg-[#ddddf7] h-[50px] w-[50px] rounded-[50%] object-cover"
+            className="bg-dark-bg-neutral h-[50px] w-[50px] rounded-[50%] object-cover"
           />
           <div>
             <span>{user.displayName}</span>

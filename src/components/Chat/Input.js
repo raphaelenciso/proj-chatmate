@@ -1,8 +1,7 @@
-import Img from "../img/img.png";
-import Attach from "../img/attach.png";
+import Img from "../../img/img.png";
 import { useContext, useState } from "react";
-import { AuthContext } from "../context/AuthContext";
-import { ChatContext } from "../context/ChatContext";
+import { AuthContext } from "../../context/AuthContext";
+import { ChatContext } from "../../context/ChatContext";
 import {
   arrayUnion,
   doc,
@@ -11,7 +10,7 @@ import {
   updateDoc,
 } from "firebase/firestore";
 import { v4 as uuid } from "uuid";
-import { db, storage } from "../firebase";
+import { db, storage } from "../../firebase";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 
 export default function Input() {
@@ -66,16 +65,15 @@ export default function Input() {
   };
 
   return (
-    <div className="h-[50px] bg-white p-[10px] flex items-center justify-between">
+    <div className="h-[50px] bg-dark-bg-neutral p-[10px] flex items-center justify-between">
       <input
         type="text"
         placeholder="Type something..."
-        className="w-full border-none outline-none text-lg text-[#2f2d52] placeholder:text-slate-400"
+        className="w-[80%] border-none outline-none text-lg bg-dark-bg-neutral-lighter text-dark-text-primary placeholder:text-dark-text-secondary placeholder:text-md rounded-2xl px-4 py-1 mr-2 | sm:w-[85%] "
         onChange={(e) => setText(e.target.value)}
         value={text}
       />
       <div className="flex items-center gap-[10px]">
-        <img src={Attach} alt="" className="w-[24px] cursor-pointer" />
         <input
           type="file"
           name=""
@@ -85,11 +83,15 @@ export default function Input() {
           onChange={(e) => setImg(e.target.files[0])}
         />
         <label htmlFor="file">
-          <img src={Img} alt="img" className="w-[45px] cursor-pointer" />
+          <img
+            src={Img}
+            alt="img"
+            className="w-[40px] cursor-pointer | sm:w-[30px]"
+          />
         </label>
 
         <button
-          className="text-white bg-[#8da4f1] px-4 py-1 rounded-md"
+          className="text-white bg-secondary-main px-4 py-1 rounded-lg "
           onClick={handleSend}
         >
           Send

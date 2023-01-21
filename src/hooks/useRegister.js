@@ -48,5 +48,5 @@ export const useRegister = () => {
     }
   };
 
-  return { register, error };
+  return { register, error, setError };
 };

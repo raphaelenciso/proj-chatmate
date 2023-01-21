@@ -1,7 +1,7 @@
 import { doc, onSnapshot } from "firebase/firestore";
 import { useContext, useEffect, useState } from "react";
-import { ChatContext } from "../context/ChatContext";
-import { db } from "../firebase";
+import { ChatContext } from "../../context/ChatContext";
+import { db } from "../../firebase";
 import Message from "./Message";
 
 const Messages = () => {
@@ -20,7 +20,7 @@ const Messages = () => {
 
   console.log(messages);
   return (
-    <div className="bg-[#ddddf7] p-[10px] h-[calc(100%-100px)] overflow-scroll">
+    <div className="bg-dark-bg-main p-[10px] h-[calc(100%-100px)] overflow-scroll">
       {messages &&
         messages.map((message) => (
           <Message key={message.id} message={message} />
