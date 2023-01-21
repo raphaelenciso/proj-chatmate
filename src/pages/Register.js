@@ -25,7 +25,7 @@ const Register = () => {
   }
 
   return (
-    <div className="bg-dark-bg-neutral w-[90%] max-w-sm px-16 py-8 rounded-lg flex flex-col gap-2 items-center ">
+    <div className="bg-dark-bg-neutral w-[90%] max-w-sm px-12 py-8 rounded-lg flex flex-col gap-2 items-center ">
       <span className="text-primary-main font-bold text-2xl mb-4">
         Register
       </span>
