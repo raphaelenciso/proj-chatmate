@@ -21,6 +21,9 @@ export default function Input() {
   const { data } = useContext(ChatContext);
 
   const handleSend = async () => {
+    setText("");
+    setImg(null);
+
     if (img) {
       const storageRef = ref(storage, uuid());
 
@@ -59,9 +62,6 @@ export default function Input() {
       },
       [data.chatId + ".date"]: serverTimestamp(),
     });
-
-    setText("");
-    setImg(null);
   };
 
   return (
@@ -71,6 +71,7 @@ export default function Input() {
         placeholder="Type something..."
         className="w-[80%] border-none outline-none text-lg bg-dark-bg-neutral-lighter text-dark-text-primary placeholder:text-dark-text-secondary placeholder:text-md rounded-2xl px-4 py-1 mr-2 | sm:w-[85%] "
         onChange={(e) => setText(e.target.value)}
+        onKeyDown={(e) => e.key === "Enter" && handleSend()}
         value={text}
       />
       <div className="flex items-center gap-[10px]">
@@ -81,7 +82,6 @@ export default function Input() {
           className="hidden"
           accept="image/*"
           onChange={(e) => setImg(e.target.files[0])}
-          onKeyDown={(e) => e.key === "Enter" && handleSend}
         />
         <label htmlFor="file">
           <img
