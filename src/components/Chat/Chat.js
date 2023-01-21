@@ -23,7 +23,7 @@ const Chat = () => {
     >
       {data.user.displayName && (
         <>
-          <div className="h-[50px] bg-primary-darker flex items-center justify-start p-[10px] text-dark-text-primary">
+          <div className="h-[50px] bg-primary-darker flex items-center justify-start  text-dark-text-primary | sm:p-[10px]">
             <BiArrowBack
               className=" inline-block sm:hidden mr-2 text-[2.2rem] rounded-[50%] p-2 hover:bg-primary-lighter "
               onClick={handleBack}
@@ -33,7 +33,7 @@ const Chat = () => {
               alt="icon"
               className="bg-dark-text-primary h-[25px] w-[25px] rounded-[50%] object-cover mr-2"
             />
-            <span className="font-bold">{data.user.displayName}</span>
+            <span className="font-bold text-xl">{data.user.displayName}</span>
           </div>
           <Messages />
           <Input />
