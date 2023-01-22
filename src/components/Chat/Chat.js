@@ -3,9 +3,11 @@ import Input from "./Input";
 import { useContext, useEffect } from "react";
 import { ChatContext } from "../../context/ChatContext";
 import { BiArrowBack } from "react-icons/bi";
+import { AuthContext } from "../../context/AuthContext";
 
 const Chat = () => {
   const { data, dispatch } = useContext(ChatContext);
+  const { currentUser } = useContext(AuthContext);
 
   const handleBack = () => {
     dispatch({ type: "REMOVE_USER" });
@@ -33,7 +35,11 @@ const Chat = () => {
               alt="icon"
               className="bg-dark-text-primary h-[25px] w-[25px] rounded-[50%] object-cover mr-2"
             />
-            <span className="font-bold text-xl">{data.user.displayName}</span>
+            <span className="font-bold text-xl">
+              {data.user.displayName === currentUser.displayName
+                ? "me"
+                : data.user.displayName}
+            </span>
           </div>
           <Messages />
           <Input />

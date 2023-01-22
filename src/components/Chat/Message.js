@@ -15,17 +15,19 @@ const Message = ({ message }) => {
     const timeDifference = currentTime - seconds;
 
     if (timeDifference < 60) {
-      return "Just now";
+      return Math.floor(timeDifference) + "s";
     } else if (timeDifference > 60 && timeDifference <= 3600) {
-      return Math.floor(timeDifference / 60) + "m ago";
+      return Math.floor(timeDifference / 60) + "m";
     } else if (timeDifference > 3600 && timeDifference <= 86400) {
-      return Math.floor(timeDifference / 3600) + "h ago";
+      return Math.floor(timeDifference / 3600) + "h";
     } else if (timeDifference > 86400 && timeDifference <= 604800) {
-      return Math.floor(timeDifference / 86400) + "w ago";
+      return Math.floor(timeDifference / 86400) + "d";
     } else if (timeDifference > 604800 && timeDifference <= 2629743) {
-      return Math.floor(timeDifference / 604800) + "mo ago";
+      return Math.floor(timeDifference / 604800) + "w";
     } else if (timeDifference > 2629743 && timeDifference <= 31556926) {
-      return Math.floor(timeDifference / 2629743) + "yr ago";
+      return Math.floor(timeDifference / 2629743) + "mo";
+    } else if (timeDifference > 31556926) {
+      return Math.floor(timeDifference / 31556926) + "yr";
     }
   };
 
@@ -50,7 +52,7 @@ const Message = ({ message }) => {
       className={`flex gap-3 mb-2 | ${owner && "flex-row-reverse"}`}
       ref={ref}
     >
-      <div className="flex flex-col text-dark-text-secondary mb-[20px]">
+      <div className="flex flex-col items-center text-dark-text-secondary mb-[20px]">
         <img
           src={
             message.senderId === currentUser.uid
@@ -60,7 +62,7 @@ const Message = ({ message }) => {
           alt=""
           className="bg-dark-text-primary h-[40px] w-[40px] rounded-[50%] object-cover"
         />
-        <span>{displayTimeAgo(message.date.seconds)}</span>
+        <span className=" ">{displayTimeAgo(message.date.seconds)}</span>
       </div>
       <div
         className={`max-w-[80%] flex flex-col gap-[10px] ${
@@ -68,16 +70,18 @@ const Message = ({ message }) => {
         }`}
       >
         <div
-          className={`bg-dark-bg-neutral-lighter py-[10px] px-[20px] text-white max-w-[245px] | ${
-            owner
-              ? " bg-primary-main rounded-l-lg rounded-br-lg"
-              : "rounded-r-lg rounded-bl-lg"
+          className={`bg-dark-bg-neutral-lighter py-[10px] px-[20px] text-white max-w-[245px] rounded-lg | ${
+            owner && " bg-primary-main"
           }`}
         >
           {message.text.length > 24 ? cutString(message.text) : message.text}
         </div>
         {message.img && (
-          <img src={message.img} alt="img" className="w-[50%] max-w-max" />
+          <img
+            src={message.img}
+            alt="img"
+            className="w-[50%] max-w-max rounded-lg"
+          />
         )}
       </div>
     </div>

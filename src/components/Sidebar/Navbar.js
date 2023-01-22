@@ -18,7 +18,7 @@ const Navbar = () => {
         />
         <span>{currentUser.displayName}</span>
         <button
-          className="bg-secondary-main rounded-lg hover:cursor-pointer px-2 py-1 text-xs "
+          className="bg-secondary-main rounded-lg hover:cursor-pointer hover:opacity-80 px-2 py-1 text-xs "
           onClick={() => signOut(auth)}
         >
           Logout
