@@ -4,10 +4,12 @@ import { useContext, useEffect } from "react";
 import { ChatContext } from "../../context/ChatContext";
 import { BiArrowBack } from "react-icons/bi";
 import { AuthContext } from "../../context/AuthContext";
+import { useState } from "react";
 
 const Chat = () => {
   const { data, dispatch } = useContext(ChatContext);
   const { currentUser } = useContext(AuthContext);
+  const [img, setImg] = useState(null);
 
   const handleBack = () => {
     dispatch({ type: "REMOVE_USER" });
@@ -41,8 +43,8 @@ const Chat = () => {
                 : data.user.displayName}
             </span>
           </div>
-          <Messages />
-          <Input />
+          <Messages img={img} setImg={setImg} />
+          <Input img={img} setImg={setImg} />
         </>
       )}
     </div>

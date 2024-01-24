@@ -13,13 +13,20 @@ const Register = () => {
   async function handleSubmit(e) {
     e.preventDefault();
 
-    if (!avatar) {
-      return setError("avatar is required");
-    }
+    setError("");
 
     const displayName = e.target[0].value;
     const email = e.target[1].value;
     const password = e.target[2].value;
+    const confirmPassword = e.target[4].value;
+
+    if (password !== confirmPassword) {
+      return setError("Passwords does not match");
+    }
+
+    if (!avatar) {
+      return setError("Avatar is required");
+    }
 
     await register(displayName, email, password, avatar);
   }
@@ -30,9 +37,14 @@ const Register = () => {
         Register
       </span>
       <form className="flex flex-col gap-4 w-full" onSubmit={handleSubmit}>
-        <TextField type="text" placeholder="display name" />
-        <TextField type="email" placeholder="email" />
-        <TextField type="password" placeholder="password" />
+        <TextField type="text" placeholder="Display Name" required={true} />
+        <TextField type="email" placeholder="Email Address" required={true} />
+        <TextField type="password" placeholder="Password" required={true} />
+        <TextField
+          type="password"
+          placeholder="Confirm Password"
+          required={true}
+        />
 
         <input
           type="file"

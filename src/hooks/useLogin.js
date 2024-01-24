@@ -17,7 +17,11 @@ export const useLogin = () => {
 
       navigate("/");
     } catch (error) {
-      setError(error.message);
+      if (error.code.includes("auth")) {
+        setError("Invalid email or password");
+      } else {
+        setError("Something went wrong");
+      }
     }
   };
 

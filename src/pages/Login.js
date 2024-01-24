@@ -19,10 +19,19 @@ const Login = () => {
       <span className="text-primary-main font-bold text-2xl">ChatMate</span>
       <span className="text-primary-darker text-sm">Login</span>
       <form className="flex flex-col gap-4 w-full" onSubmit={handleSubmit}>
-        <TextField type="email" placeholder="email" />
-        <TextField type="password" placeholder="password" />
-
-        <p className="text-red-500 text-sm">{error.split(":")[1]}</p>
+        <TextField
+          type="email"
+          placeholder="Email Address"
+          required={true}
+          id="loginEmail"
+        />
+        <TextField
+          type="password"
+          placeholder="Password"
+          required={true}
+          id="loginPass"
+        />
+        <p className="text-red-500 text-sm">{error}</p>
         <Button text="Login" />
       </form>
       <p className="text-dark-text-secondary text-sm mt-4">

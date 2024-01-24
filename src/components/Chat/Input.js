@@ -13,10 +13,10 @@ import {
 import { v4 as uuid } from "uuid";
 import { db, storage } from "../../firebase";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
+import { MdClear } from "react-icons/md";
 
-export default function Input() {
+export default function Input({ img, setImg }) {
   const [text, setText] = useState("");
-  const [img, setImg] = useState(null);
 
   const { currentUser } = useContext(AuthContext);
   const { data } = useContext(ChatContext);
@@ -66,7 +66,18 @@ export default function Input() {
   };
 
   return (
-    <div className="h-[50px] bg-dark-bg-neutral p-[10px] flex items-center justify-between relative">
+    <div
+      className={`${
+        img ? "h-[250px]" : "h-[50px]"
+      } bg-dark-bg-neutral p-[10px] flex items-center justify-between relative`}
+    >
+      {img && (
+        <img
+          src={URL.createObjectURL(img)}
+          alt="img"
+          className="absolute top-0 h-[95px]"
+        />
+      )}
       <input
         type="text"
         placeholder="Type something..."
@@ -84,13 +95,17 @@ export default function Input() {
           accept="image/*"
           onChange={(e) => setImg(e.target.files[0])}
         />
-        <label htmlFor="file">
-          <img
-            src={Img}
-            alt="img"
-            className="w-[25px] cursor-pointer hover:opacity-80 | sm:w-[30px]"
-          />
-        </label>
+        {img ? (
+          <MdClear color="white" size={30} onClick={() => setImg(null)} />
+        ) : (
+          <label htmlFor="file">
+            <img
+              src={Img}
+              alt="img"
+              className="w-[25px] cursor-pointer hover:opacity-80 | sm:w-[30px]"
+            />
+          </label>
+        )}
       </div>
       <button className="text-primary-main px-2 " onClick={handleSend}>
         <IoSend className="text-[1.5rem] hover:opacity-80 | sm:text-[2rem]" />
