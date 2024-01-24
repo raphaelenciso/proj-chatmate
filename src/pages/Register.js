@@ -37,13 +37,29 @@ const Register = () => {
         Register
       </span>
       <form className="flex flex-col gap-4 w-full" onSubmit={handleSubmit}>
-        <TextField type="text" placeholder="Display Name" required={true} />
-        <TextField type="email" placeholder="Email Address" required={true} />
-        <TextField type="password" placeholder="Password" required={true} />
+        <TextField
+          type="text"
+          placeholder="Display Name"
+          required={true}
+          id="regName"
+        />
+        <TextField
+          type="email"
+          placeholder="Email Address"
+          required={true}
+          id="regEmail"
+        />
+        <TextField
+          type="password"
+          placeholder="Password"
+          required={true}
+          id="regPass"
+        />
         <TextField
           type="password"
           placeholder="Confirm Password"
           required={true}
+          id="regCPass"
         />
 
         <input

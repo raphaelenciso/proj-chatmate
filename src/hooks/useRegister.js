@@ -1,4 +1,8 @@
-import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  updateProfile,
+  sendEmailVerification,
+} from "firebase/auth";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { setDoc, doc } from "firebase/firestore";
 import { auth, storage, db } from "../firebase";
@@ -18,6 +22,8 @@ export const useRegister = () => {
         email,
         password
       );
+
+      await sendEmailVerification(response.user);
 
       const storageRef = ref(storage, email.split("@")[0]);
 
