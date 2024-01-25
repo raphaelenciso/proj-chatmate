@@ -26,7 +26,7 @@ export default function Input({ img, setImg }) {
     setImg(null);
 
     if (img) {
-      const storageRef = ref(storage, uuid());
+      const storageRef = ref(storage, "chatPhotos/" + uuid());
 
       await uploadBytesResumable(storageRef, img);
       const imageURL = await getDownloadURL(storageRef);

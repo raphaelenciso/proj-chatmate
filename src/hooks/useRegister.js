@@ -25,7 +25,7 @@ export const useRegister = () => {
 
       await sendEmailVerification(response.user);
 
-      const storageRef = ref(storage, email.split("@")[0]);
+      const storageRef = ref(storage, "avatars/" + email.split("@")[0]);
 
       await uploadBytesResumable(storageRef, avatar);
       const imageURL = await getDownloadURL(storageRef);
